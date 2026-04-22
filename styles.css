@@ -40,6 +40,12 @@
     
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.15s ease;
+
+    --addblog-bg: #8b5cf6;
+    --addblog-border: #8b5cf6;
+    --addblog-text: #ffffff;
+    --addblog-hover-bg: #7c3aed;
+    --addblog-hover-border: #7c3aed;
 }
 
 [data-theme="light"] {
@@ -58,6 +64,12 @@
     
     --glass: rgba(255, 255, 255, 0.8);
     --glass-border: rgba(0, 0, 0, 0.1);
+
+    --addblog-bg: #8b5cf6;
+    --addblog-border: #8b5cf6;
+    --addblog-text: #ffffff;
+    --addblog-hover-bg: #7c3aed;
+    --addblog-hover-border: #7c3aed;
 }
 
 *, *::before, *::after {
@@ -650,6 +662,36 @@ ul {
 .btn-secondary:hover {
     background: var(--bg-card-hover);
     border-color: var(--border-light);
+}
+
+.btn-add-blog {
+    background: var(--addblog-bg);
+    border: 1px solid var(--addblog-border);
+    color: var(--addblog-text);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
+}
+
+.btn-add-blog:hover {
+    background: var(--addblog-hover-bg);
+    border-color: var(--addblog-hover-border);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35);
+}
+
+.btn-add-blog:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4);
+}
+
+.btn-add-blog:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-add-blog:disabled:hover {
+    transform: none;
 }
 
 .hero-stats {

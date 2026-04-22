@@ -179,6 +179,10 @@ toastStyles.textContent = `
     .btn-add-blog:disabled:hover { transform: none; box-shadow: none; }
     .char-count { display: block; font-size: 0.75rem; color: var(--text-muted); text-align: right; margin-top: 4px; }
     .blogs-loading { grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px; }
+    .btn-add-blog { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--addblog-bg); border: 1px solid var(--addblog-border); border-radius: var(--radius-md); color: var(--addblog-text); font-size: 1rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+    .btn-add-blog:hover { transform: translateY(-2px); }
+    .btn-add-blog:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .btn-add-blog:disabled:hover { transform: none; }
     @media (max-width: 768px) {
         .btn-signin span, .btn-signout span { display: none; }
         .btn-signin, .btn-signout { padding: 10px 14px; }
