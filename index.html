@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nexora - Learn real ways to earn money online with freelancing, side hustles, and digital skills. Beginner-friendly guides for online income.">
+    <meta name="keywords" content="make money online, freelancing, side hustles, online income, passive income, digital skills, earn money">
+    <meta name="author" content="Nexora">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Nexora – Smart Ways to Earn Online">
+    <meta property="og:description" content="Learn real ways to make money online with freelancing, side hustles, and digital skills with simple step-by-step guides.">
+    <meta property="og:type" content="website">
+    <title>Nexora – Smart Ways to Earn Online</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="cursor-glow"></div>
+    
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <span class="brand-icon"><i class="fas fa-bolt"></i></span>
+                <div class="brand-text-wrap">
+                    <span class="brand-text">Nexora</span>
+                    <span class="brand-tagline">Smart Ways to Earn Online</span>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#categories" class="nav-link">Categories</a></li>
+                <li><a href="#featured" class="nav-link">Guides</a></li>
+                <li><a href="#trending" class="nav-link">Trending</a></li>
+                <li><a href="#newsletter" class="nav-link">Newsletter</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-signin" id="signInBtn">
+                    <i class="fab fa-google"></i>
+                    <span>Sign in with Google</span>
+                </button>
+                <div class="user-info-nav" id="userInfoNav" style="display: none;">
+                    <img src="" alt="User" id="userAvatarNav" class="user-avatar-nav">
+                    <span id="userLabel" class="user-label"></span>
+                </div>
+                <a href="admin.html" class="btn btn-admin" id="adminBtn" style="display: none;">
+                    <i class="fas fa-cog"></i>
+                    <span>Admin</span>
+                </a>
+                <button class="btn btn-signout" id="signOutBtn" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign out</span>
+                </button>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" id="home">
+            <div class="hero-bg">
+                <div class="hero-particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+                <div class="hero-gradient"></div>
+                <div class="hero-grid"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon"><i class="fas fa-star"></i></span>
+                    <span>Trusted by 50,000+ Earners</span>
+                </div>
+                <h1 class="hero-title">Nexora</h1>
+                <p class="hero-subtitle">Unlock real online income with proven methods, side hustles, and beginner-friendly guides. Learn step by step using freelancing, digital tools, and smart strategies.</p>
+                <div class="hero-cta">
+                    <a href="#featured" class="btn btn-primary"><span>Start Learning</span><i class="fas fa-rocket"></i></a>
+                    <a href="#categories" class="btn btn-secondary"><i class="fas fa-compass"></i><span>Explore Guides</span></a>
+                    <button class="btn btn-add-blog" id="addBlogBtn" disabled title="Sign in to submit a blog">
+                        <i class="fas fa-plus"></i><span>Add Blog</span>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-number">50K+</span><span class="stat-label">Active Readers</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat"><span class="stat-number">200+</span><span class="stat-label">Practical Guides</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat"><span class="stat-number">$1M+</span><span class="stat-label">Strategies Shared</span></div>
+                </div>
+            </div>
+            <div class="scroll-indicator"><div class="mouse"><div class="wheel"></div></div><span>Scroll to explore</span></div>
+        </section>
+
+        <section class="categories" id="categories">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Categories</span>
+                    <h2 class="section-title">Explore Categories</h2>
+                    <p class="section-subtitle">Find the perfect path to start your online income journey</p>
+                </div>
+                <div class="categories-grid">
+                    <a href="make-money.html" class="category-card"><div class="category-icon"><i class="fas fa-wallet"></i></div><div class="category-info"><h3>Make Money Online</h3><p>Discover real ways to earn money from home.</p><span class="category-count">45 articles</span></div><div class="category-arrow"><i class="fas fa-arrow-right"></i></div><div class="category-glow"></div></a>
+                    <a href="freelancing.html" class="category-card"><div class="category-icon"><i class="fas fa-laptop-code"></i></div><div class="category-info"><h3>Freelancing</h3><p>Learn how to get clients and start earning.</p><span class="category-count">38 articles</span></div><div class="category-arrow"><i class="fas fa-arrow-right"></i></div><div class="category-glow"></div></a>
+                    <a href="side-hustles.html" class="category-card"><div class="category-icon"><i class="fas fa-rocket"></i></div><div class="category-info"><h3>Side Hustles</h3><p>Simple ideas to build extra income streams.</p><span class="category-count">52 articles</span></div><div class="category-arrow"><i class="fas fa-arrow-right"></i></div><div class="category-glow"></div></a>
+                    <a href="tools.html" class="category-card"><div class="category-icon"><i class="fas fa-tools"></i></div><div class="category-info"><h3>Tools & Resources</h3><p>Best platforms and tools to grow faster.</p><span class="category-count">65 articles</span></div><div class="category-arrow"><i class="fas fa-arrow-right"></i></div><div class="category-glow"></div></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured" id="featured">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Featured</span>
+                    <h2 class="section-title">Featured Guides</h2>
+                    <p class="section-subtitle">Start with our most popular and beginner-friendly guides.</p>
+                </div>
+                <div class="featured-grid">
+                    <article class="article-card featured-large"><div class="article-image"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=500&fit=crop" alt="Online Income"><span class="article-badge">Make Money</span></div><div class="article-content"><div class="article-meta"><span class="meta-date"><i class="far fa-calendar"></i> Apr 15, 2026</span><span class="meta-read"><i class="far fa-clock"></i> 8 min</span></div><h3 class="article-title">15 Proven Ways to Make $1,000+ Per Month Online</h3><p class="article-excerpt">Discover the most effective methods that successful online earners use to build sustainable income streams.</p><div class="article-footer"><a href="posts/15-proven-ways-make-money-online.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a></div></div></article>
+                    <article class="article-card"><div class="article-image"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop" alt="Freelancing"><span class="article-badge">Freelancing</span></div><div class="article-content"><div class="article-meta"><span class="meta-date"><i class="far fa-calendar"></i> Apr 12, 2026</span><span class="meta-read"><i class="far fa-clock"></i> 6 min</span></div><h3 class="article-title">How to Start Freelancing with No Experience</h3><p class="article-excerpt">A complete beginner's guide to landing your first freelance clients.</p><div class="article-footer"><a href="posts/freelancing-beginners-guide.html" class="read-more">Read <i class="fas fa-arrow-right"></i></a></div></div></article>
+                    <article class="article-card"><div class="article-image"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=500&fit=crop" alt="Side Hustles"><span class="article-badge">Side Hustles</span></div><div class="article-content"><div class="article-meta"><span class="meta-date"><i class="far fa-calendar"></i> Apr 10, 2026</span><span class="meta-read"><i class="far fa-clock"></i> 5 min</span></div><h3 class="article-title">20 Side Hustles You Can Do After Work</h3><p class="article-excerpt">Practical side hustle ideas that fit into your evenings and weekends.</p><div class="article-footer"><a href="posts/20-side-hustles-evening.html" class="read-more">Read <i class="fas fa-arrow-right"></i></a></div></div></article>
+                    <article class="article-card"><div class="article-image"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=500&fit=crop" alt="Passive Income"><span class="article-badge">Beginner</span></div><div class="article-content"><div class="article-meta"><span class="meta-date"><i class="far fa-calendar"></i> Apr 8, 2026</span><span class="meta-read"><i class="far fa-clock"></i> 7 min</span></div><h3 class="article-title">How to Build Passive Income from Zero</h3><p class="article-excerpt">Step-by-step guide to creating your first passive income stream.</p><div class="article-footer"><a href="posts/passive-income.html" class="read-more">Read <i class="fas fa-arrow-right"></i></a></div></div></article>
+                </div>
+
+                <div class="user-blogs-section" id="userBlogsSection">
+                    <div class="section-header">
+                        <span class="section-tag">Community</span>
+                        <h2 class="section-title">Community Blogs</h2>
+                        <p class="section-subtitle">Check out blogs created by our community members</p>
+                    </div>
+                    <div class="user-blogs-grid" id="userBlogsGrid">
+                        <p class="blogs-loading"><i class="fas fa-spinner fa-spin"></i> Loading blogs...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trending" id="trending">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Trending</span>
+                    <h2 class="section-title">Trending Now</h2>
+                    <p class="section-subtitle">See what others are learning and earning from right now.</p>
+                </div>
+                <div class="trending-list">
+                    <article class="trending-item"><span class="trending-rank">01</span><div class="trending-image"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&h=200&fit=crop" alt="Trending"></div><div class="trending-content"><span class="trending-category">Make Money</span><h3>15 Proven Ways to Make $1,000+ Online</h3><div class="trending-meta"><span><i class="far fa-eye"></i> 15.2K views</span><span><i class="far fa-heart"></i> 892 likes</span></div></div><a href="posts/15-proven-ways-make-money-online.html" class="trending-arrow"><i class="fas fa-arrow-right"></i></a></article>
+                    <article class="trending-item"><span class="trending-rank">02</span><div class="trending-image"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&h=200&fit=crop" alt="Trending"></div><div class="trending-content"><span class="trending-category">Freelancing</span><h3>Freelancing 101: Complete Beginner's Guide</h3><div class="trending-meta"><span><i class="far fa-eye"></i> 12.3K views</span><span><i class="far fa-heart"></i> 654 likes</span></div></div><a href="posts/freelancing-beginners-guide.html" class="trending-arrow"><i class="fas fa-arrow-right"></i></a></article>
+                    <article class="trending-item"><span class="trending-rank">03</span><div class="trending-image"><img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=200&h=200&fit=crop" alt="Trending"></div><div class="trending-content"><span class="trending-category">Make Money</span><h3>Passive Income for Beginners</h3><div class="trending-meta"><span><i class="far fa-eye"></i> 8.5K views</span><span><i class="far fa-heart"></i> 521 likes</span></div></div><a href="posts/passive-income-beginners-guide.html" class="trending-arrow"><i class="fas fa-arrow-right"></i></a></article>
+                    <article class="trending-item"><span class="trending-rank">04</span><div class="trending-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop" alt="Trending"></div><div class="trending-content"><span class="trending-category">Tools</span><h3>Best Freelance Platforms in 2026</h3><div class="trending-meta"><span><i class="far fa-eye"></i> 7.8K views</span><span><i class="far fa-heart"></i> 412 likes</span></div></div><a href="posts/best-freelance-platforms.html" class="trending-arrow"><i class="fas fa-arrow-right"></i></a></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter">
+            <div class="container">
+                <div class="newsletter-card">
+                    <div class="newsletter-pattern"></div>
+                    <div class="newsletter-content">
+                        <div class="newsletter-icon"><i class="fas fa-envelope-open-text"></i></div>
+                        <h2>Join Nexora Community</h2>
+                        <p>Get the latest online earning tips, tools, and guides straight to your inbox. No spam — only value.</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="form-group">
+                                <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn btn-primary"><span>Subscribe Now</span><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                            <p class="form-note"><i class="fas fa-shield-alt"></i> No spam. Unsubscribe anytime.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">About</span>
+                    <h2 class="section-title">Why Nexora?</h2>
+                    <p class="section-subtitle">Nexora is built for beginners who want to start earning online without confusion. We focus on simple, proven methods that anyone can follow.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand"><span class="brand-icon"><i class="fas fa-bolt"></i></span><div class="brand-text-wrap"><span class="brand-text">Nexora</span><span class="brand-tagline">Smart Ways to Earn Online</span></div></div>
+                    <p>Your trusted platform for learning how to make money online with freelancing, side hustles, and digital skills.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links"><h4>Categories</h4><ul><li><a href="make-money.html">Make Money</a></li><li><a href="freelancing.html">Freelancing</a></li><li><a href="side-hustles.html">Side Hustles</a></li><li><a href="tools.html">Tools</a></li></ul></div>
+                <div class="footer-links"><h4>Resources</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+                <div class="footer-links"><h4>Popular</h4><ul><li><a href="posts/15-proven-ways-make-money-online.html">Make Money Guide</a></li><li><a href="posts/freelancing-beginners-guide.html">Freelancing Guide</a></li><li><a href="posts/passive-income-beginners-guide.html">Passive Income</a></li><li><a href="posts/20-side-hustles-evening.html">Side Hustles</a></li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nexora. All rights reserved.</p>
+                <div class="footer-links-mini"><a href="#">Home</a><a href="#">Guides</a><a href="#">Categories</a><a href="contact.html">Contact</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="blog-modal" id="blogModal" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle" aria-hidden="true">
+        <div class="blog-modal-backdrop"></div>
+        <div class="blog-modal-content">
+            <button class="blog-modal-close" id="blogModalClose"><i class="fas fa-times"></i></button>
+            <h3 id="blogModalTitle">Create New Blog Post</h3>
+            <form id="blogForm">
+                <div class="form-group">
+                    <label for="blogTitle">Blog Title</label>
+                    <input type="text" id="blogTitle" placeholder="Enter your blog title" maxlength="80" required>
+                    <small class="char-count"><span id="titleCount">0</span>/80</small>
+                </div>
+                <div class="form-group">
+                    <label for="blogCategory">Category</label>
+                    <select id="blogCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="Make Money">Make Money</option>
+                        <option value="Freelancing">Freelancing</option>
+                        <option value="Side Hustles">Side Hustles</option>
+                        <option value="Tools">Tools</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="blogImage">Image URL (optional, must be https)</label>
+                    <input type="url" id="blogImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="blogContent">Blog Content (120-5000 characters)</label>
+                    <textarea id="blogContent" rows="8" placeholder="Write your blog content here..." required></textarea>
+                    <small class="char-count"><span id="contentCount">0</span>/5000 (min 120)</small>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" id="cancelBlogBtn">Cancel</button>
+                    <button type="submit" class="btn btn-save"><i class="fas fa-paper-plane"></i> Submit for Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js" defer></script>
+    <script type="module" src="firebase.js"></script>
+</body>
+</html>

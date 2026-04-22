@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Community Blog - Nexora">
+    <meta name="author" content="Nexora">
+    <meta property="og:title" content="Community Blog - Nexora">
+    <meta property="og:description" content="Read community blogs on Nexora">
+    <title>Community Blog - Nexora | Smart Ways to Earn Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="post.css">
+    <style>
+        .user-post-header { text-align: center; padding: 80px 0 40px; }
+        .user-post-header h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin: 20px 0 16px; line-height: 1.2; }
+        .user-post-header .post-excerpt { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 24px; }
+        .user-post-header .post-meta { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+        .user-post-header .post-stats { display: flex; gap: 16px; color: var(--text-muted); }
+        .user-post-header .post-category-tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 500; }
+        .user-post-image { width: 100%; max-width: 900px; margin: 0 auto 40px; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16/9; }
+        .user-post-image img { width: 100%; height: 100%; object-fit: cover; }
+        .user-post-image .placeholder { width: 100%; height: 100%; background: var(--gradient-1); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: white; }
+        .user-post-content { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; }
+        .user-post-content p { margin-bottom: 24px; }
+        .user-post-content .lead { font-size: 1.25rem; color: var(--text-secondary); }
+        .post-not-found { text-align: center; padding: 100px 0; }
+        .post-not-found h1 { margin-bottom: 16px; }
+        .post-not-found p { color: var(--text-secondary); margin-bottom: 24px; }
+        .post-not-found a { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <span class="brand-icon"><i class="fas fa-bolt"></i></span>
+                    <div class="brand-text-wrap">
+                        <span class="brand-text">Nexora</span>
+                        <span class="brand-tagline">Smart Ways to Earn Online</span>
+                    </div>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#categories" class="nav-link">Categories</a></li>
+                <li><a href="../index.html#featured" class="nav-link">Guides</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="post-page">
+        <div id="postContent"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nexora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const blogId = params.get('id');
+            loadBlogPost(blogId);
+        });
+
+        function loadBlogPost(blogId) {
+            const container = document.getElementById('postContent');
+            if (!container) return;
+
+            if (!blogId) {
+                container.innerHTML = '<div class="post-not-found"><h1>Blog Not Found</h1><p>This blog post could not be found.</p><a href="../index.html">Go to Home</a></div>';
+                return;
+            }
+
+            const blogs = JSON.parse(localStorage.getItem('nexora_blogs') || '[]');
+            const blog = blogs.find(b => b.id === blogId);
+
+            if (!blog) {
+                container.innerHTML = '<div class="post-not-found"><h1>Blog Not Found</h1><p>This blog post could not be found or has been removed.</p><a href="../index.html">Go to Home</a></div>';
+                return;
+            }
+
+            const categoryLink = getCategoryLink(blog.category);
+
+            document.title = blog.title + ' - Nexora';
+            document.querySelector('meta[name="description"]').content = blog.content.substring(0, 160);
+            document.querySelector('meta[property="og:title"]').content = blog.title;
+
+            const contentHtml = blog.content.split('\n\n').map(p => {
+                if (p.startsWith('# ')) return '<h1>' + p.substring(2) + '</h1>';
+                if (p.startsWith('## ')) return '<h2>' + p.substring(3) + '</h2>';
+                if (p.startsWith('### ')) return '<h3>' + p.substring(4) + '</h3>';
+                return '<p>' + p + '</p>';
+            }).join('');
+
+            container.innerHTML = `
+                <article class="post">
+                    <header class="user-post-header">
+                        <div class="post-category">
+                            <a href="${categoryLink}" class="post-category-tag">
+                                <i class="fas fa-folder"></i> ${blog.category}
+                            </a>
+                        </div>
+                        <h1>${blog.title}</h1>
+                        <p class="post-excerpt">${blog.content.substring(0, 200)}${blog.content.length > 200 ? '...' : ''}</p>
+                        <div class="post-meta">
+                            <div class="post-author">
+                                <img src="https://ui-avatars.com/api/?name=You&background=6366f1&color=fff&size=100" alt="Author">
+                                <div>
+                                    <span class="author-name">Community Author</span>
+                                    <span class="post-date">${blog.date}</span>
+                                </div>
+                            </div>
+                            <div class="post-stats">
+                                <span><i class="far fa-clock"></i> ${blog.readTime} min read</span>
+                            </div>
+                        </div>
+                    </header>
+                    
+                    <div class="user-post-image">
+                        ${blog.image 
+                            ? `<img src="${blog.image}" alt="${blog.title}">`
+                            : `<div class="placeholder"><i class="fas fa-blog"></i></div>`
+                        }
+                    </div>
+                    
+                    <div class="user-post-content">
+                        ${contentHtml}
+                    </div>
+                    
+                    <div class="cta-box" style="margin-top: 40px; padding: 32px; background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius-lg); text-align: center;">
+                        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 12px;">Share this blog</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">Help other community members discover this content.</p>
+                        <div style="display: flex; gap: 12px; justify-content: center;">
+                            <button class="share-btn twitter" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button>
+                            <button class="share-btn facebook" onclick="shareFacebook()"><i class="fab fa-facebook"></i></button>
+                            <button class="share-btn linkedin" onclick="shareLinkedIn()"><i class="fab fa-linkedin"></i></button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function getCategoryLink(category) {
+            const links = {
+                'Make Money': '../make-money.html',
+                'Freelancing': '../freelancing.html',
+                'Side Hustles': '../side-hustles.html',
+                'Tools': '../tools.html'
+            };
+            return links[category] || '../index.html';
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://twitter.com/intent/tweet?url=' + url + '&text=' + title, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + url, '_blank');
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .share-btn {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: var(--radius-md);
+                font-size: 1.1rem;
+                cursor: pointer;
+                transition: var(--transition);
+            }
+            .share-btn.twitter { background: #1da1f2; color: white; }
+            .share-btn.facebook { background: #1877f2; color: white; }
+            .share-btn.linkedin { background: #0a66c2; color: white; }
+            .share-btn:hover { transform: translateY(-2px); }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

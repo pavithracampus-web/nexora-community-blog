@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Nexora - Get in touch with questions about our guides, partnerships, or general inquiries.">
+    <meta name="keywords" content="contact Nexora, get in touch, support, help">
+    <meta name="author" content="Nexora">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nexora.example.com/contact.html">
+    <meta property="og:title" content="Contact Nexora - Smart Ways to Earn Online">
+    <meta property="og:description" content="Get in touch with questions about our guides, partnerships, or general inquiries.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexora.example.com/contact.html">
+    <title>Contact Nexora - Smart Ways to Earn Online</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            position: relative;
+            padding: 140px 0 60px;
+            text-align: center;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+        }
+        .page-content {
+            padding: 60px 0;
+            background: var(--bg-primary);
+        }
+        .page-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .page-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            color: var(--primary-light);
+        }
+        .page-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+        .contact-method {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .contact-method:hover {
+            border-color: var(--border-light);
+            transform: translateY(-4px);
+        }
+        .contact-method i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        .contact-method h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .contact-method p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        .contact-form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 32px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+        .contact-form-wrapper .form-group {
+            margin-bottom: 20px;
+        }
+        .contact-form-wrapper label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        .contact-form-wrapper input,
+        .contact-form-wrapper select,
+        .contact-form-wrapper textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .contact-form-wrapper input:focus,
+        .contact-form-wrapper select:focus,
+        .contact-form-wrapper textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .contact-form-wrapper textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="cursor-glow"></div>
+    
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <span class="brand-icon"><i class="fas fa-bolt"></i></span>
+                    <div class="brand-text-wrap">
+                        <span class="brand-text">Nexora</span>
+                        <span class="brand-tagline">Smart Ways to Earn Online</span>
+                    </div>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#categories" class="nav-link">Categories</a></li>
+                <li><a href="index.html#featured" class="nav-link">Guides</a></li>
+                <li><a href="index.html#trending" class="nav-link">Trending</a></li>
+                <li><a href="index.html#newsletter" class="nav-link">Newsletter</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <div class="page-hero-bg"></div>
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span class="current">Contact</span>
+                </div>
+                <h1>Contact Us</h1>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">We'd love to hear from you. Got a question, suggestion, or want to collaborate? Here's how to reach us.</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="content-section">
+                <div class="contact-grid">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>For general inquiries and support</p>
+                        <p style="margin-top: 12px; color: var(--primary);">hello@nexora.example.com</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Partnerships</h3>
+                        <p>For brand collaborations and sponsorships</p>
+                        <p style="margin-top: 12px; color: var(--primary);">partners@nexora.example.com</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Press & Media</h3>
+                        <p>For press inquiries and interviews</p>
+                        <p style="margin-top: 12px; color: var(--primary);">press@nexora.example.com</p>
+                    </div>
+                </div>
+
+                <h2>Send a Message</h2>
+                <p>Prefer to fill out a form? Use the contact form below and we'll get back to you within 48 hours.</p>
+                
+                <div class="contact-form-wrapper">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <select id="contactSubject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="press">Press & Media</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <p style="margin-top: 40px; font-size: 0.9rem; color: var(--text-muted);">
+                    <strong>Response Time:</strong> We typically respond within 24-48 hours on business days.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <span class="brand-icon"><i class="fas fa-bolt"></i></span>
+                        <div class="brand-text-wrap">
+                            <span class="brand-text">Nexora</span>
+                            <span class="brand-tagline">Smart Ways to Earn Online</span>
+                        </div>
+                    </div>
+                    <p>Your trusted platform for learning how to make money online with freelancing, side hustles, and digital skills.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="make-money.html">Make Money</a></li>
+                        <li><a href="freelancing.html">Freelancing</a></li>
+                        <li><a href="side-hustles.html">Side Hustles</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Popular</h4>
+                    <ul>
+                        <li><a href="posts/15-proven-ways-make-money-online.html">Make Money Guide</a></li>
+                        <li><a href="posts/freelancing-beginners-guide.html">Freelancing Guide</a></li>
+                        <li><a href="posts/passive-income-beginners-guide.html">Passive Income</a></li>
+                        <li><a href="posts/20-side-hustles-evening.html">Side Hustles</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nexora. All rights reserved. Built for learners. Designed for growth.</p>
+                <div class="footer-links-mini">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#guides">Guides</a>
+                    <a href="index.html#categories">Categories</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    form.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

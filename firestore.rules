@@ -1,0 +1,49 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ==================== COMMUNITY BLOGS ====================
+    match /communityBlogs/{blogId} {
+      // Public read: only published blogs
+      allow read: if request.auth != null && resource.data.published == true;
+      
+      // Author read: can read their own posts (pending/rejected)
+      allow read: if request.auth != null && resource.data.authorUid == request.auth.uid;
+      
+      // Create: only logged-in users, must set published=false and moderationStatus=pending
+      // Validates field lengths and required fields
+      allow create: if request.auth != null
+        && request.resource.data.published == false
+        && request.resource.data.moderationStatus == 'pending'
+        && request.resource.data.title.size() >= 5
+        && request.resource.data.title.size() <= 80
+        && request.resource.data.content.size() >= 120
+        && request.resource.data.content.size() <= 5000
+        && request.resource.data.category in ['Make Money', 'Freelancing', 'Side Hustles', 'Tools']
+        && request.resource.data.authorUid == request.auth.uid
+        && request.resource.data.authorName == request.auth.token.name
+        && request.resource.data.authorPhoto == request.auth.token.picture;
+      
+      // Update/Delete: ONLY admins
+      allow update, delete: if isAdmin();
+      
+      // No other access
+      allow read, write: if false;
+    }
+    
+    // ==================== ADMINS COLLECTION ====================
+    // Only admin users themselves can read this (for checking permissions)
+    // Only existing admins can write (add new admins)
+    match /admins/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if isAdmin();
+    }
+    
+    // ==================== HELPER FUNCTION ====================
+    function isAdmin() {
+      return request.auth != null && 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+  }
+}

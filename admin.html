@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Dashboard - Nexora</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container { max-width: 1200px; margin: 0 auto; padding: 120px 24px 60px; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        .admin-header h1 { font-family: var(--font-display); font-size: 2rem; }
+        .admin-stats { display: flex; gap: 16px; }
+        .admin-stat { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 24px; text-align: center; }
+        .admin-stat-number { display: block; font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .admin-stat-label { font-size: 0.8rem; color: var(--text-muted); }
+        .admin-section { margin-bottom: 48px; }
+        .admin-section h2 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .admin-section h2 i { color: var(--primary); }
+        .admin-table { width: 100%; border-collapse: collapse; background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .admin-table th { background: var(--bg-tertiary); padding: 14px 16px; text-align: left; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+        .admin-table td { padding: 14px 16px; border-top: 1px solid var(--border); }
+        .admin-table tr:hover td { background: var(--bg-card-hover); }
+        .admin-post-title { font-weight: 600; max-width: 250px; }
+        .admin-category { display: inline-block; padding: 4px 10px; background: var(--primary); color: white; border-radius: var(--radius-full); font-size: 0.7rem; font-weight: 600; }
+        .admin-actions { display: flex; gap: 8px; }
+        .btn-approve { padding: 8px 14px; background: var(--success); color: white; border: none; border-radius: var(--radius-md); font-size: 0.8rem; font-weight: 500; cursor: pointer; }
+        .btn-reject { padding: 8px 14px; background: var(--danger); color: white; border: none; border-radius: var(--radius-md); font-size: 0.8rem; font-weight: 500; cursor: pointer; }
+        .btn-approve:hover, .btn-reject:hover { transform: translateY(-2px); }
+        .empty-state { text-align: center; padding: 60px; color: var(--text-muted); }
+        .empty-state i { font-size: 3rem; margin-bottom: 16px; opacity: 0.5; }
+        .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 10001; }
+        .toast { display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 12px; transform: translateX(120%); transition: transform 0.3s ease; }
+        .toast.show { transform: translateX(0); }
+        .toast-success i { color: var(--success); }
+        .toast-error i { color: var(--danger); }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="cursor-glow"></div>
+    
+    <header class="header scrolled">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <span class="brand-icon"><i class="fas fa-bolt"></i></span>
+                    <div class="brand-text-wrap">
+                        <span class="brand-text">Nexora</span>
+                        <span class="brand-tagline">Admin Dashboard</span>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-info-nav" id="userInfoNav" style="display: none;">
+                    <img src="" alt="User" id="userAvatarNav" class="user-avatar-nav">
+                    <span id="userLabel" class="user-label"></span>
+                </div>
+                <button class="btn btn-signout" id="signOutBtn">
+                    <i class="fas fa-sign-out-alt"></i><span>Sign out</span>
+                </button>
+                <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1><i class="fas fa-shield-alt"></i> Moderation Dashboard</h1>
+                <div class="admin-stats">
+                    <div class="admin-stat"><span class="admin-stat-number" id="pendingCount">0</span><span class="admin-stat-label">Pending</span></div>
+                    <div class="admin-stat"><span class="admin-stat-number" id="approvedCount">0</span><span class="admin-stat-label">Approved</span></div>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2><i class="fas fa-clock"></i> Pending Reviews</h2>
+                <table class="admin-table" id="pendingTable">
+                    <thead><tr><th>Title</th><th>Author</th><th>Category</th><th>Date</th><th>Actions</th></tr></thead>
+                    <tbody id="pendingBody"><tr><td colspan="5" class="empty-state"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr></tbody>
+                </table>
+            </div>
+
+            <div class="admin-section">
+                <h2><i class="fas fa-check-circle"></i> Approved</h2>
+                <table class="admin-table" id="approvedTable">
+                    <thead><tr><th>Title</th><th>Author</th><th>Category</th><th>Date</th></tr></thead>
+                    <tbody id="approvedBody"><tr><td colspan="4" class="empty-state">No approved posts yet</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js" defer></script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
