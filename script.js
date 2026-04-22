@@ -90,29 +90,34 @@ function initSmoothScroll() {
 
 function initBlogModal() {
     const modal = document.getElementById('blogModal');
+    if (!modal) return;
+
     const addBtn = document.getElementById('addBlogBtn');
     const closeBtn = document.getElementById('blogModalClose');
     const cancelBtn = document.getElementById('cancelBlogBtn');
     const form = document.getElementById('blogForm');
-    const backdrop = modal?.querySelector('.blog-modal-backdrop');
-    if (!modal) return;
+    const backdrop = modal.querySelector('.blog-modal-backdrop');
 
-    addBtn?.addEventListener('click', () => {
+    addBtn.addEventListener('click', () => {
+        if (addBtn.disabled) return;
         modal.hidden = false;
-        modal.querySelector('#blogTitle')?.focus();
+        const titleInput = document.getElementById('blogTitle');
+        if (titleInput) titleInput.focus();
     });
 
     const closeBlogModalFn = () => {
         modal.hidden = true;
-        form?.reset();
-        document.getElementById('titleCount').textContent = '0';
-        document.getElementById('contentCount').textContent = '0';
-        addBtn?.focus();
+        if (form) form.reset();
+        const titleCount = document.getElementById('titleCount');
+        const contentCount = document.getElementById('contentCount');
+        if (titleCount) titleCount.textContent = '0';
+        if (contentCount) contentCount.textContent = '0';
+        if (addBtn) addBtn.focus();
     };
 
-    closeBtn?.addEventListener('click', closeBlogModalFn);
-    cancelBtn?.addEventListener('click', closeBlogModalFn);
-    backdrop?.addEventListener('click', closeBlogModalFn);
+    closeBtn.addEventListener('click', closeBlogModalFn);
+    cancelBtn.addEventListener('click', closeBlogModalFn);
+    backdrop.addEventListener('click', closeBlogModalFn);
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !modal.hidden) {
@@ -120,17 +125,10 @@ function initBlogModal() {
         }
     });
 
-    form?.addEventListener('submit', (e) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
-        handleBlogSubmit();
+        window.handleBlogSubmit();
     });
-}
-
-function openBlogModal() {
-    const modal = document.getElementById('blogModal');
-    if (!modal) return;
-    modal.hidden = false;
-    modal.querySelector('#blogTitle')?.focus();
 }
 
 function initCharCounters() {
@@ -190,8 +188,7 @@ toastStyles.textContent = `
 `;
 document.head.appendChild(toastStyles);
 
-// ==================== AUTH HANDLERS (imported from firebase.js) ====================
-// These functions will be called from firebase.js via window
+// ==================== AUTH HANDLERS ====================
 window.handleAuthStateChange = function(user) {
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
@@ -205,12 +202,13 @@ window.handleAuthStateChange = function(user) {
         signInBtn.style.display = 'none';
         signOutBtn.style.display = 'inline-flex';
         userInfoNav.style.display = 'flex';
-        userAvatarNav.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName)}`;
+        userAvatarNav.src = user.photoURL || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.displayName);
         userLabel.textContent = user.displayName;
         if (adminBtn) adminBtn.style.display = 'inline-flex';
         if (addBlogBtn) {
             addBlogBtn.disabled = false;
-            addBlogBtn.title = 'Click to create a new blog post';
+            addBlogBtn.removeAttribute('disabled');
+            addBlogBtn.title = 'Create a new blog post';
         }
     } else {
         signInBtn.style.display = 'inline-flex';
@@ -219,6 +217,7 @@ window.handleAuthStateChange = function(user) {
         if (adminBtn) adminBtn.style.display = 'none';
         if (addBlogBtn) {
             addBlogBtn.disabled = true;
+            addBlogBtn.setAttribute('disabled', 'true');
             addBlogBtn.title = 'Sign in to submit a blog';
         }
     }
@@ -242,35 +241,37 @@ window.handleBlogSubmit = function() {
 
     if (!title || !category || !content) {
         showToast('Please fill in all required fields', 'error');
-        return false;
+        return;
     }
     if (title.length < 5 || title.length > 80) {
         showToast('Title must be between 5-80 characters', 'error');
-        return false;
+        return;
     }
     if (content.length < 120 || content.length > 5000) {
         showToast('Content must be between 120-5000 characters', 'error');
-        return false;
+        return;
     }
     if (imageUrl && !imageUrl.startsWith('https://')) {
         showToast('Image URL must start with https://', 'error');
-        return false;
+        return;
     }
 
-    // Dispatch custom event for firebase.js to handle
     document.dispatchEvent(new CustomEvent('blog-submit', {
         detail: { title, category, imageUrl, content }
     }));
-    return true;
 };
 
 window.closeBlogModal = function() {
     const modal = document.getElementById('blogModal');
+    const addBlogBtn = document.getElementById('addBlogBtn');
     modal.hidden = true;
-    document.getElementById('blogForm')?.reset();
-    document.getElementById('titleCount').textContent = '0';
-    document.getElementById('contentCount').textContent = '0';
-    document.getElementById('addBlogBtn')?.focus();
+    const form = document.getElementById('blogForm');
+    if (form) form.reset();
+    const titleCount = document.getElementById('titleCount');
+    const contentCount = document.getElementById('contentCount');
+    if (titleCount) titleCount.textContent = '0';
+    if (contentCount) contentCount.textContent = '0';
+    if (addBlogBtn) addBlogBtn.focus();
 };
 
 window.showToast = showToast;
