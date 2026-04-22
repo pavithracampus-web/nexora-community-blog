@@ -98,24 +98,25 @@ function initBlogModal() {
     if (!modal) return;
 
     addBtn?.addEventListener('click', () => {
-        openBlogModal();
+        modal.hidden = false;
+        modal.querySelector('#blogTitle')?.focus();
     });
 
-    const closeBlogModal = () => {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
+    const closeBlogModalFn = () => {
+        modal.hidden = true;
         form?.reset();
         document.getElementById('titleCount').textContent = '0';
         document.getElementById('contentCount').textContent = '0';
+        addBtn?.focus();
     };
 
-    closeBtn?.addEventListener('click', closeBlogModal);
-    cancelBtn?.addEventListener('click', closeBlogModal);
-    backdrop?.addEventListener('click', closeBlogModal);
+    closeBtn?.addEventListener('click', closeBlogModalFn);
+    cancelBtn?.addEventListener('click', closeBlogModalFn);
+    backdrop?.addEventListener('click', closeBlogModalFn);
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeBlogModal();
+        if (e.key === 'Escape' && !modal.hidden) {
+            closeBlogModalFn();
         }
     });
 
@@ -128,9 +129,8 @@ function initBlogModal() {
 function openBlogModal() {
     const modal = document.getElementById('blogModal');
     if (!modal) return;
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.getElementById('blogTitle')?.focus();
+    modal.hidden = false;
+    modal.querySelector('#blogTitle')?.focus();
 }
 
 function initCharCounters() {
@@ -266,11 +266,11 @@ window.handleBlogSubmit = function() {
 
 window.closeBlogModal = function() {
     const modal = document.getElementById('blogModal');
-    modal?.classList.remove('active');
-    modal?.setAttribute('aria-hidden', 'true');
+    modal.hidden = true;
     document.getElementById('blogForm')?.reset();
     document.getElementById('titleCount').textContent = '0';
     document.getElementById('contentCount').textContent = '0';
+    document.getElementById('addBlogBtn')?.focus();
 };
 
 window.showToast = showToast;
